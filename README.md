@@ -28,3 +28,8 @@ Language: Modern C++ (C++11 or higher).
 Platform: Ubuntu Linux.
 Version Control: Git Flow strategy via GitHub.
 CI/CD: GitHub Actions for automated testing.
+
+## System Architecture
+This project consists of two main Docker containers:
+1. **Database:** PostgreSQL (Official Image)
+2. **Application:** Custom C++ Application
