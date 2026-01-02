@@ -1,18 +1,34 @@
-version: "3.9"
+
+version: '3.8'
 
 services:
-  db:
-    image: postgres:15
-    container_name: project_postgres
-    restart: always
+  
+  db: 
+    image: postgres:latest
+    container_name: ers-db
     environment:
-      POSTGRES_USER: projectuser
-      POSTGRES_PASSWORD: projectpass
-      POSTGRES_DB: projectdb
+      POSTGRES_USER: admin           
+      POSTGRES_PASSWORD: Ers-Root@123 
+      POSTGRES_DB: ers_db            
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - ers-network
+
+  
+  app:
+    build: .                      
+    container_name: ers-app
+    depends_on:
+      - db                        
+    networks:
+      - ers-network
+    tty: true                     
 
 volumes:
-  postgres_data:
+  db_data:
+
+networks:
+  ers-network:
