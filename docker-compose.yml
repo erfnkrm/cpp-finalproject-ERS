@@ -1,18 +1,31 @@
-
 version: '3.8'
 
 services:
-  db: 
+  db:
     image: postgres:latest
+    container_name: ers-db
     environment:
-      POSTGRES_USER: admin           
-      POSTGRES_PASSWORD: Ers-Root@123 
-      POSTGRES_DB: ers_db            
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: Ers-Root@123
+      POSTGRES_DB: ers_db
     ports:
       - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
     networks:
       - ers-network
 
+  app:
+    build: .
+    container_name: ers-app
+    depends_on:
+      - db
+    networks:
+      - ers-network
+    tty: true
+
+volumes:
+  db_data:
+
 networks:
   ers-network:
-
