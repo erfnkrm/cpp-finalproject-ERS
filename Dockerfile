@@ -16,6 +16,5 @@ COPY . .
 # Build step
 RUN mkdir -p build && cd build && cmake .. && make
 
-# 3. RUN the new executable name
-CMD ["./build/ERS_Project"]
-
+# Command to run the "SIS_Project" executable
+CMD ["./build/SIS_Project"]
