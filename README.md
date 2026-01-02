@@ -33,3 +33,18 @@ CI/CD: GitHub Actions for automated testing.
 This project consists of two main Docker containers:
 1. **Database:** PostgreSQL (Official Image)
 2. **Application:** Custom C++ Application
+
+## Configuration
+The system uses the following default credentials in `docker-compose.yml`:
+* **Database:** `ers_db`
+* **User:** `admin`
+* **Password:** `Ers-Root@123`
+* **Port:** `5432`
+
+## Running the Project
+1.  Ensure Docker is running.
+2.  Build and start the system:
+    ```bash
+    docker-compose up --build
+    ```
+3.  The application will automatically connect to the database and initialize the tables.
